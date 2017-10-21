@@ -6,6 +6,18 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
+extension KeyedDecodingContainerProtocol {
+    
+    func decodeDateIfPresent(key: Self.Key) throws -> Date? {
+        if let dateInMilliSeconds = try self.decodeIfPresent(Int.self, forKey: key) {
+            return Date(timeIntervalSince1970: TimeInterval(dateInMilliSeconds) / 1000)
+        } else {
+            return nil
+        }
+    }
+    
+}
+
 extension String {
     
     var urlEncoded: String? {
