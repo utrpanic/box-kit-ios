@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		071AFB501F9B74F8004BA041 /* BoxJeonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071AFB4F1F9B74F8004BA041 /* BoxJeonExtension.swift */; };
+		071AFB521F9B810B004BA041 /* BoxJeonUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071AFB511F9B810B004BA041 /* BoxJeonUIExtension.swift */; };
 		077DA65F1F9B73F60044EAC4 /* BoxJeonExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077DA6551F9B73F60044EAC4 /* BoxJeonExtension.framework */; };
 		077DA6641F9B73F60044EAC4 /* BoxJeonExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DA6631F9B73F60044EAC4 /* BoxJeonExtensionTests.swift */; };
 		077DA6661F9B73F60044EAC4 /* BoxJeonExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 077DA6581F9B73F60044EAC4 /* BoxJeonExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		071AFB4F1F9B74F8004BA041 /* BoxJeonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxJeonExtension.swift; sourceTree = "<group>"; };
+		071AFB511F9B810B004BA041 /* BoxJeonUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxJeonUIExtension.swift; sourceTree = "<group>"; };
 		077DA6551F9B73F60044EAC4 /* BoxJeonExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxJeonExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		077DA6581F9B73F60044EAC4 /* BoxJeonExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxJeonExtension.h; sourceTree = "<group>"; };
 		077DA6591F9B73F60044EAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			children = (
 				077DA6581F9B73F60044EAC4 /* BoxJeonExtension.h */,
 				071AFB4F1F9B74F8004BA041 /* BoxJeonExtension.swift */,
+				071AFB511F9B810B004BA041 /* BoxJeonUIExtension.swift */,
 				077DA6591F9B73F60044EAC4 /* Info.plist */,
 			);
 			path = BoxJeonExtension;
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071AFB501F9B74F8004BA041 /* BoxJeonExtension.swift in Sources */,
+				071AFB521F9B810B004BA041 /* BoxJeonUIExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
