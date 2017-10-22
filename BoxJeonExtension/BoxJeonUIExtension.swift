@@ -6,19 +6,19 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
-protocol NibLoadable: class {
+public protocol NibLoadable: class {
     
     public static var id: String { get }
     
 }
 
-extension NibLoadable {
+public extension NibLoadable {
     
     public static var id: String { return NSStringFromClass(self).components(separatedBy: ".").last! }
     
 }
 
-extension NibLoadable where Self: UIView {
+public extension NibLoadable where Self: UIView {
     
     public static func create() -> Self? {
         let bundle = Bundle(for: self)
@@ -34,7 +34,7 @@ extension NibLoadable where Self: UIView {
     
 }
 
-extension NibLoadable where Self: UIViewController {
+public extension NibLoadable where Self: UIViewController {
     
     public static func create(storyboardName: String) -> Self? {
         return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: self.id) as? Self
@@ -42,7 +42,7 @@ extension NibLoadable where Self: UIViewController {
     
 }
 
-extension UICollectionView {
+public extension UICollectionView {
     
     public func registerNib(id: String) {
         self.register(UINib(nibName: id, bundle: nil), forCellWithReuseIdentifier: id)
@@ -54,7 +54,7 @@ extension UICollectionView {
     
 }
 
-extension UIColor {
+public extension UIColor {
     
     public convenience init?(hex: String?) {
         guard let hex = hex?.replacingOccurrences(of: "#", with: ""), hex.length == 6 else {
@@ -69,14 +69,14 @@ extension UIColor {
     
 }
 
-extension UIImage {
+public extension UIImage {
     
     public var original: UIImage { return self.withRenderingMode(.alwaysOriginal) }
     public var template: UIImage { return self.withRenderingMode(.alwaysTemplate) }
     
 }
 
-extension UITableView {
+public extension UITableView {
     
     public func registerNib(id: String) {
         self.register(UINib(nibName: id, bundle: nil), forCellReuseIdentifier: id)
@@ -88,7 +88,7 @@ extension UITableView {
     
 }
 
-extension UIView: NibLoadable {
+public extension UIView: NibLoadable {
     
     public func addSubviewAsMatchParent(_ view: UIView) {
         self.addSubview(view)
@@ -101,4 +101,4 @@ extension UIView: NibLoadable {
     
 }
 
-extension UIViewController: NibLoadable { }
+public extension UIViewController: NibLoadable { }
