@@ -6,6 +6,18 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
+public extension Dictionary where Key == NSAttributedStringKey, Value == Any {
+    
+    var typingAttributes: Dictionary<String, Any>? {
+        var dictionary = Dictionary<String, Any>()
+        self.forEach({ (key, value) in
+            dictionary[key.rawValue] = value
+        })
+        return dictionary
+    }
+    
+}
+
 public extension KeyedDecodingContainerProtocol {
     
     public func decodeDateIfPresent(key: Self.Key) throws -> Date? {
