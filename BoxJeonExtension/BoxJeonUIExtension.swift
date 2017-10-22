@@ -8,19 +8,19 @@
 
 protocol NibLoadable: class {
     
-    static var id: String { get }
+    public static var id: String { get }
     
 }
 
 extension NibLoadable {
     
-    static var id: String { return NSStringFromClass(self).components(separatedBy: ".").last! }
+    public static var id: String { return NSStringFromClass(self).components(separatedBy: ".").last! }
     
 }
 
 extension NibLoadable where Self: UIView {
     
-    static func create() -> Self? {
+    public static func create() -> Self? {
         let bundle = Bundle(for: self)
         let views = bundle.loadNibNamed(self.id, owner: nil, options: nil)
         for index in 0 ..< (views?.count ?? 0) {
@@ -36,7 +36,7 @@ extension NibLoadable where Self: UIView {
 
 extension NibLoadable where Self: UIViewController {
     
-    static func create(storyboardName: String) -> Self? {
+    public static func create(storyboardName: String) -> Self? {
         return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: self.id) as? Self
     }
     
@@ -44,11 +44,11 @@ extension NibLoadable where Self: UIViewController {
 
 extension UICollectionView {
     
-    func registerNib(id: String) {
+    public func registerNib(id: String) {
         self.register(UINib(nibName: id, bundle: nil), forCellWithReuseIdentifier: id)
     }
     
-    func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
+    public func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
         return self.dequeueReusableCell(withReuseIdentifier: T.id, for: indexPath) as! T
     }
     
@@ -56,7 +56,7 @@ extension UICollectionView {
 
 extension UIColor {
     
-    convenience init?(hex: String?) {
+    public convenience init?(hex: String?) {
         guard let hex = hex?.replacingOccurrences(of: "#", with: ""), hex.length == 6 else {
             return nil
         }
@@ -71,18 +71,18 @@ extension UIColor {
 
 extension UIImage {
     
-    var original: UIImage { return self.withRenderingMode(.alwaysOriginal) }
-    var template: UIImage { return self.withRenderingMode(.alwaysTemplate) }
+    public var original: UIImage { return self.withRenderingMode(.alwaysOriginal) }
+    public var template: UIImage { return self.withRenderingMode(.alwaysTemplate) }
     
 }
 
 extension UITableView {
     
-    func registerNib(id: String) {
+    public func registerNib(id: String) {
         self.register(UINib(nibName: id, bundle: nil), forCellReuseIdentifier: id)
     }
     
-    func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
+    public func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
         return self.dequeueReusableCell(withIdentifier: T.id, for: indexPath) as! T
     }
     
@@ -90,7 +90,7 @@ extension UITableView {
 
 extension UIView: NibLoadable {
     
-    func addSubviewAsMatchParent(_ view: UIView) {
+    public func addSubviewAsMatchParent(_ view: UIView) {
         self.addSubview(view)
         let leading = view.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0)
         let trailing = view.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
