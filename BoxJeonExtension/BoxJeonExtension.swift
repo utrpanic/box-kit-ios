@@ -8,7 +8,7 @@
 
 public extension Dictionary where Key == NSAttributedStringKey, Value == Any {
     
-    var typingAttributes: Dictionary<String, Any>? {
+    var asTypingAttributes: Dictionary<String, Any> {
         var dictionary = Dictionary<String, Any>()
         self.forEach({ (key, value) in
             dictionary[key.rawValue] = value
