@@ -32,12 +32,12 @@ public extension KeyedDecodingContainerProtocol {
 
 public extension String {
     
-    public var urlEncoded: String? {
-        return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+    public var urlEncoded: String {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
     }
     
-    public var urlDecoded: String? {
-        return self.removingPercentEncoding
+    public var urlDecoded: String {
+        return self.removingPercentEncoding ?? self
     }
     
     public var trimmed: String {
@@ -48,20 +48,22 @@ public extension String {
         return self.utf16.count
     }
     
-    public func substring(to: Int) -> String {
-        guard 0 <= to else { return "" }
-        guard to < self.length else { return self }
-        return String(Substring(self.utf16.prefix(to)))
+    public func prefix(length: Int) -> String {
+        guard 0 <= length else { return "" }
+        guard length < self.length else { return self }
+        return String(Substring(self.utf16.prefix(length)))
     }
     
-    public func substring(from: Int) -> String {
-        guard 0 <= from else { return self }
-        guard from < self.length else { return "" }
-        return String(Substring(self.utf16.suffix(self.length - from)))
+    public func suffix(length: Int) -> String {
+        guard 0 <= length else { return "" }
+        guard length < self.length else { return self }
+        return String(Substring(self.utf16.suffix(length)))
     }
     
-    public func substring(from: Int, to: Int) -> String {
-        return self.substring(to: to).substring(from: from)
+    public func suffix(from index: Int) -> String {
+        guard 0 <= index else { return self }
+        guard index < self.length else { return "" }
+        return String(Substring(self.utf16.suffix(self.length - index)))
     }
     
     public func localized(_ args: CVarArg...) -> String {
