@@ -6,19 +6,20 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
-public protocol NibLoadable: class {
+public protocol HasClassNameId: class {
     
     static var id: String { get }
-    
 }
 
-public extension NibLoadable {
+public extension HasClassNameId {
     
     static var id: String { return NSStringFromClass(self).components(separatedBy: ".").last! }
+}
+
+public protocol NibLoadable: HasClassNameId {
     
 }
 
-extension UIView: NibLoadable { }
 public extension NibLoadable where Self: UIView {
     
     public static func create() -> Self? {
@@ -32,28 +33,24 @@ public extension NibLoadable where Self: UIView {
         }
         return nil
     }
-    
 }
 
-extension UIViewController: NibLoadable { }
 public extension NibLoadable where Self: UIViewController {
     
     public static func create(storyboardName: String) -> Self? {
         return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: self.id) as? Self
     }
-    
 }
 
 public extension UICollectionView {
     
-    public func registerNib<T: UICollectionViewCell>(_ cellClass: T.Type) {
+    public func registerNib<T: UICollectionViewCell>(_ cellClass: T.Type) where T: NibLoadable {
         self.register(UINib(nibName: T.id, bundle: nil), forCellWithReuseIdentifier: T.id)
     }
     
-    public func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
+    public func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T where T: NibLoadable {
         return self.dequeueReusableCell(withReuseIdentifier: T.id, for: indexPath) as! T
     }
-    
 }
 
 public extension UIColor {
@@ -76,26 +73,23 @@ public extension UIColor {
         scanner.scanHexInt32(&rgb)
         self.init(red: CGFloat((rgb & 0xff0000) >> 16) / 255.0, green: CGFloat((rgb & 0x00ff00) >> 8) / 255.0, blue: CGFloat(rgb & 0x0000ff) / 255.0, alpha: 1)
     }
-    
 }
 
 public extension UIImage {
     
     public var original: UIImage { return self.withRenderingMode(.alwaysOriginal) }
     public var template: UIImage { return self.withRenderingMode(.alwaysTemplate) }
-    
 }
 
 public extension UITableView {
     
-    public func registerNib<T: UITableViewCell>(_ cellClass: T.Type) {
+    public func registerNib<T: UITableViewCell>(_ cellClass: T.Type) where T: NibLoadable {
         self.register(UINib(nibName: T.id, bundle: nil), forCellReuseIdentifier: T.id)
     }
     
-    public func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
+    public func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T where T: NibLoadable {
         return self.dequeueReusableCell(withIdentifier: T.id, for: indexPath) as! T
     }
-    
 }
 
 public extension UIView {
@@ -108,5 +102,4 @@ public extension UIView {
         let bottom = view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         NSLayoutConstraint.activate([leading, trailing, top, bottom])
     }
-    
 }

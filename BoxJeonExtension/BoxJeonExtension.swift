@@ -15,7 +15,6 @@ public extension Dictionary where Key == NSAttributedStringKey, Value == Any {
         })
         return dictionary
     }
-    
 }
 
 public extension KeyedDecodingContainerProtocol {
@@ -27,7 +26,6 @@ public extension KeyedDecodingContainerProtocol {
             return nil
         }
     }
-    
 }
 
 public extension String {
@@ -74,5 +72,4 @@ public extension String {
             return String(format: format, arguments: args)
         }
     }
-    
 }
