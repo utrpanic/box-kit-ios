@@ -16,13 +16,17 @@ public extension HasClassNameId {
     static var id: String { return NSStringFromClass(self).components(separatedBy: ".").last! }
 }
 
-public protocol NibLoadable: HasClassNameId {
+extension UIView: HasClassNameId {}
+
+extension UIViewController: HasClassNameId {}
+
+public protocol NibLoadable {
     
 }
 
 public extension NibLoadable where Self: UIView {
     
-    public static func create() -> Self? {
+    public static func createFromNib() -> Self? {
         let bundle = Bundle(for: self)
         let views = bundle.loadNibNamed(self.id, owner: nil, options: nil)
         for index in 0 ..< (views?.count ?? 0) {
@@ -44,7 +48,11 @@ public extension NibLoadable where Self: UIViewController {
 
 public extension UICollectionView {
     
-    public func registerNib<T: UICollectionViewCell>(_ cellClass: T.Type) where T: NibLoadable {
+    public func registeFromClass<T: UICollectionViewCell>(_ cellClass: T.Type) {
+        self.register(cellClass, forCellWithReuseIdentifier: T.id)
+    }
+    
+    public func registerFromNib<T: UICollectionViewCell>(_ cellClass: T.Type) where T: NibLoadable {
         self.register(UINib(nibName: T.id, bundle: nil), forCellWithReuseIdentifier: T.id)
     }
     
@@ -83,7 +91,11 @@ public extension UIImage {
 
 public extension UITableView {
     
-    public func registerNib<T: UITableViewCell>(_ cellClass: T.Type) where T: NibLoadable {
+    public func registerFromClass<T: UITableViewCell>(_ cellClass: T.Type) {
+        self.register(cellClass, forCellReuseIdentifier: T.id)
+    }
+    
+    public func registerFromNib<T: UITableViewCell>(_ cellClass: T.Type) where T: NibLoadable {
         self.register(UINib(nibName: T.id, bundle: nil), forCellReuseIdentifier: T.id)
     }
     
