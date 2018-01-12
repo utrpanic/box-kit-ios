@@ -6,6 +6,13 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
+public extension Bool {
+    
+    mutating func toggle() {
+        self = !self
+    }
+}
+
 public extension Dictionary where Key == NSAttributedStringKey, Value == Any {
     
     var asTypingAttributes: Dictionary<String, Any> {
@@ -58,10 +65,14 @@ public extension String {
         return String(Substring(self.utf16.suffix(length)))
     }
     
-    public func suffix(from index: Int) -> String {
-        guard 0 <= index else { return self }
-        guard index < self.length else { return "" }
-        return String(Substring(self.utf16.suffix(self.length - index)))
+    public func suffix(from: Int) -> String {
+        guard 0 <= from else { return self }
+        guard from < self.length else { return "" }
+        return String(Substring(self.utf16.suffix(self.length - from)))
+    }
+    
+    public func substring(from: Int, length: Int) -> String {
+        return self.suffix(from: from).prefix(length: length)
     }
     
     public func localized(_ args: CVarArg...) -> String {
