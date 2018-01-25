@@ -15,23 +15,12 @@ public extension Bool {
 
 public extension Dictionary where Key == NSAttributedStringKey, Value == Any {
     
-    var asTypingAttributes: Dictionary<String, Any> {
+    var convertedToStringKey: Dictionary<String, Any> {
         var dictionary = Dictionary<String, Any>()
         self.forEach({ (key, value) in
             dictionary[key.rawValue] = value
         })
         return dictionary
-    }
-}
-
-public extension KeyedDecodingContainerProtocol {
-    
-    public func decodeDateIfPresent(key: Self.Key) throws -> Date? {
-        if let dateInMilliSeconds = try self.decodeIfPresent(Int.self, forKey: key) {
-            return Date(timeIntervalSince1970: TimeInterval(dateInMilliSeconds) / 1000)
-        } else {
-            return nil
-        }
     }
 }
 
