@@ -56,7 +56,7 @@ public extension UICollectionView {
         self.register(UINib(nibName: T.id, bundle: nil), forCellWithReuseIdentifier: T.id)
     }
     
-    public func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T where T: NibLoadable {
+    public func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
         return self.dequeueReusableCell(withReuseIdentifier: T.id, for: indexPath) as! T
     }
 }
@@ -99,7 +99,7 @@ public extension UITableView {
         self.register(UINib(nibName: T.id, bundle: nil), forCellReuseIdentifier: T.id)
     }
     
-    public func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T where T: NibLoadable {
+    public func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
         return self.dequeueReusableCell(withIdentifier: T.id, for: indexPath) as! T
     }
 }
