@@ -108,10 +108,10 @@ public extension UIView {
     
     public func addSubviewAsMatchParent(_ view: UIView) {
         self.addSubview(view)
-        let leading = view.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0)
-        let trailing = view.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
-        let top = view.topAnchor.constraint(equalTo: self.topAnchor, constant: 0)
-        let bottom = view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
-        NSLayoutConstraint.activate([leading, trailing, top, bottom])
+        let leading = self.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let top = self.topAnchor.constraint(equalTo: view.topAnchor)
+        let trailing = self.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        let bottom = self.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        NSLayoutConstraint.activate([leading, top, trailing, bottom])
     }
 }
