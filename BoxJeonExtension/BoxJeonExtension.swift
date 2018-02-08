@@ -6,10 +6,34 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
+public extension Array where Array.Element : Equatable {
+    
+    func contains(_ element: Array.Element) -> Bool {
+        return self.contains(where: { $0 == element })
+    }
+    
+    @discardableResult
+    mutating func remove(element: Array.Element) -> Bool {
+        if let index = self.index(of: element) {
+            self.remove(at: index)
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
 public extension Bool {
     
     mutating func toggle() {
         self = !self
+    }
+}
+
+public extension Dictionary {
+    
+    var prettyPrint: String {
+        return (self as NSDictionary).description
     }
 }
 
@@ -21,6 +45,15 @@ public extension Dictionary where Key == NSAttributedStringKey, Value == Any {
             dictionary[key.rawValue] = value
         })
         return dictionary
+    }
+}
+
+public extension Int {
+    
+    var decimalFormatted: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
 }
 
