@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BoxJeonExtension"
-  s.version      = "0.8"
+  s.version      = "0.9"
   s.summary      = "Extensions for personal use."
 
   # This description is used to generate tags and improve search results.
@@ -72,7 +72,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/utrpanic/boxjeon-extension.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/utrpanic/boxjeon-extension.git", :tag => "v#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
