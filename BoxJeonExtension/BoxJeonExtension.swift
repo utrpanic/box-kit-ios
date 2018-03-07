@@ -6,6 +6,11 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
+public extension Array {
+    
+    var hasElement: Bool { return !self.isEmpty }
+}
+
 public extension Array where Array.Element : Equatable {
     
     func contains(_ element: Array.Element) -> Bool {
