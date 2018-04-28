@@ -111,3 +111,25 @@ public extension String {
         }
     }
 }
+
+extension URL {
+    
+    static func safeVersion(from string: String?) -> URL? {
+        guard let string = self.unescapeHtmlCharacters(from: string) else { return nil }
+        return URL(string: string) ?? URL(string: string.urlEncoded)
+    }
+    
+    private static func unescapeHtmlCharacters(from string: String?) -> String? {
+        guard string?.contains(";") == true else { return string }
+        guard let data = string?.data(using: .utf8) else { return string }
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html.rawValue,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+        if let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) {
+            return attributedString.string
+        } else {
+            return string
+        }
+    }
+}

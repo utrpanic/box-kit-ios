@@ -13,24 +13,22 @@ class BoxJeonExtensionTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testURL() {
+        let url = "http://book.daum.net/search/bookSearch.do?advancedSearchYN=y&amp;publisher=글담출판사&amp;sortType=0&amp;searchType=publisher"
+        let result = URL.safeVersion(from: url)
+        XCTAssertEqual(result?.query, "advancedSearchYN=y&publisher=%EA%B8%80%EB%8B%B4%EC%B6%9C%ED%8C%90%EC%82%AC&sortType=0&searchType=publisher")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+    func testURLPerformance() {
         self.measure {
-            // Put the code you want to measure the time of here.
+            let url = "http://book.daum.net/search/bookSearch.do?advancedSearchYN=y&amp;publisher=글담출판사&amp;sortType=0&amp;searchType=publisher"
+            _ = URL.safeVersion(from: url)
         }
     }
-    
 }
