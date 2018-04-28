@@ -64,45 +64,45 @@ public extension Int {
 
 public extension String {
     
-    public var urlEncoded: String {
+    var urlEncoded: String {
         return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
     }
     
-    public var urlDecoded: String {
+    var urlDecoded: String {
         return self.removingPercentEncoding ?? self
     }
     
-    public var trimmed: String {
+    var trimmed: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    public var length: Int {
+    var length: Int {
         return self.utf16.count
     }
     
-    public func prefix(length: Int) -> String {
+    func prefix(length: Int) -> String {
         guard 0 <= length else { return "" }
         guard length < self.length else { return self }
         return String(Substring(self.utf16.prefix(length)))
     }
     
-    public func suffix(length: Int) -> String {
+    func suffix(length: Int) -> String {
         guard 0 <= length else { return "" }
         guard length < self.length else { return self }
         return String(Substring(self.utf16.suffix(length)))
     }
     
-    public func suffix(from: Int) -> String {
+    func suffix(from: Int) -> String {
         guard 0 <= from else { return self }
         guard from < self.length else { return "" }
         return String(Substring(self.utf16.suffix(self.length - from)))
     }
     
-    public func substring(from: Int, length: Int) -> String {
+    func substring(from: Int, length: Int) -> String {
         return self.suffix(from: from).prefix(length: length)
     }
     
-    public func localized(_ args: CVarArg...) -> String {
+    func localized(_ args: CVarArg...) -> String {
         let format = NSLocalizedString(self, comment: "")
         if args.count == 0 {
             return format
@@ -112,7 +112,7 @@ public extension String {
     }
 }
 
-extension URL {
+public extension URL {
     
     static func safeVersion(from string: String?) -> URL? {
         guard let string = self.unescapeHtmlCharacters(from: string) else { return nil }
