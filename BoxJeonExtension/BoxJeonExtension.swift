@@ -137,7 +137,6 @@ public extension URL {
 public extension URL {
     
     // https://github.com/onevcat/MimeType/blob/master/Sources/MimeType.swift
-    private var defaultMimeType: String { return "application/octet-stream" }
     private var mimeTypes: [String: String] {
         return [
             "html": "text/html",
@@ -246,7 +245,7 @@ public extension URL {
         ]
     }
     
-    var mimeType: String {
-        return self.mimeTypes[self.pathExtension.lowercased()] ?? self.defaultMimeType
+    var mimeType: String? {
+        return self.mimeTypes[self.pathExtension.lowercased()]
     }
 }

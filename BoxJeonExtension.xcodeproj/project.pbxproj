@@ -12,6 +12,7 @@
 		077DA65F1F9B73F60044EAC4 /* BoxJeonExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077DA6551F9B73F60044EAC4 /* BoxJeonExtension.framework */; };
 		077DA6641F9B73F60044EAC4 /* BoxJeonExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DA6631F9B73F60044EAC4 /* BoxJeonExtensionTests.swift */; };
 		077DA6661F9B73F60044EAC4 /* BoxJeonExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 077DA6581F9B73F60044EAC4 /* BoxJeonExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07CD40B8209B51DF0089A3A6 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CD40B7209B51DF0089A3A6 /* HttpStatusCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		077DA65E1F9B73F60044EAC4 /* BoxJeonExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoxJeonExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		077DA6631F9B73F60044EAC4 /* BoxJeonExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxJeonExtensionTests.swift; sourceTree = "<group>"; };
 		077DA6651F9B73F60044EAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07CD40B7209B51DF0089A3A6 /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				077DA6581F9B73F60044EAC4 /* BoxJeonExtension.h */,
 				071AFB4F1F9B74F8004BA041 /* BoxJeonExtension.swift */,
 				071AFB511F9B810B004BA041 /* BoxJeonUIExtension.swift */,
+				07CD40B7209B51DF0089A3A6 /* HttpStatusCode.swift */,
 				077DA6591F9B73F60044EAC4 /* Info.plist */,
 			);
 			path = BoxJeonExtension;
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071AFB501F9B74F8004BA041 /* BoxJeonExtension.swift in Sources */,
+				07CD40B8209B51DF0089A3A6 /* HttpStatusCode.swift in Sources */,
 				071AFB521F9B810B004BA041 /* BoxJeonUIExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
