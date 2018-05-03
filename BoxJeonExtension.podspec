@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BoxJeonExtension"
-  s.version      = "1.3"
+  s.version      = "1.4"
   s.summary      = "Extensions for personal use."
 
   # This description is used to generate tags and improve search results.

@@ -10,62 +10,62 @@
 open class HttpStatusCode: Equatable, CustomStringConvertible {
     
     // Informational 1xx
-    static let `continue` = HttpStatusCode(value: 100)
-    static let switchingProtocol = HttpStatusCode(value: 101)
+    public static var `continue`: HttpStatusCode { return HttpStatusCode(value: 100) }
+    public static var switchingProtocol: HttpStatusCode { return HttpStatusCode(value: 101) }
     
     // Successful 2xx
-    static let ok: HttpStatusCode = HttpStatusCode(value: 200)
-    static let created: HttpStatusCode = HttpStatusCode(value: 201)
-    static let accepted: HttpStatusCode = HttpStatusCode(value: 202)
-    static let nonAuthoritativeInformation: HttpStatusCode = HttpStatusCode(value: 203)
-    static let noContent: HttpStatusCode = HttpStatusCode(value: 204)
-    static let resetContent: HttpStatusCode = HttpStatusCode(value: 205)
-    static let partialContent: HttpStatusCode = HttpStatusCode(value: 206)
+    public static var ok: HttpStatusCode { return HttpStatusCode(value: 200) }
+    public static var created: HttpStatusCode { return HttpStatusCode(value: 201) }
+    public static var accepted: HttpStatusCode { return HttpStatusCode(value: 202) }
+    public static var nonAuthoritativeInformation: HttpStatusCode { return HttpStatusCode(value: 203) }
+    public static var noContent: HttpStatusCode { return HttpStatusCode(value: 204) }
+    public static var resetContent: HttpStatusCode { return HttpStatusCode(value: 205) }
+    public static var partialContent: HttpStatusCode { return HttpStatusCode(value: 206) }
     
     // Redirection 3xx
-    static let multipleChoices: HttpStatusCode = HttpStatusCode(value: 300)
-    static let movedPermanently: HttpStatusCode = HttpStatusCode(value: 301)
-    static let found: HttpStatusCode = HttpStatusCode(value: 302)
-    static let seeOther: HttpStatusCode = HttpStatusCode(value: 303)
-    static let notModified: HttpStatusCode = HttpStatusCode(value: 304)
-    static let useProxy: HttpStatusCode = HttpStatusCode(value: 305)
-    static let temporaryRedirect: HttpStatusCode = HttpStatusCode(value: 307)
+    public static var multipleChoices: HttpStatusCode { return HttpStatusCode(value: 300) }
+    public static var movedPermanently: HttpStatusCode { return HttpStatusCode(value: 301) }
+    public static var found: HttpStatusCode { return HttpStatusCode(value: 302) }
+    public static var seeOther: HttpStatusCode { return HttpStatusCode(value: 303) }
+    public static var notModified: HttpStatusCode { return HttpStatusCode(value: 304) }
+    public static var useProxy: HttpStatusCode { return HttpStatusCode(value: 305) }
+    public static var temporaryRedirect: HttpStatusCode { return HttpStatusCode(value: 307) }
     
     // Client Error 4xx
-    static let badRequest: HttpStatusCode = HttpStatusCode(value: 400)
-    static let unauthorized: HttpStatusCode = HttpStatusCode(value: 401)
-    static let paymentRequired: HttpStatusCode = HttpStatusCode(value: 402)
-    static let forbidden: HttpStatusCode = HttpStatusCode(value: 403)
-    static let notFound: HttpStatusCode = HttpStatusCode(value: 404)
-    static let methodNotAllowed: HttpStatusCode = HttpStatusCode(value: 405)
-    static let notAcceptable: HttpStatusCode = HttpStatusCode(value: 406)
-    static let proxyAuthenticationRequired: HttpStatusCode = HttpStatusCode(value: 407)
-    static let requestTimeout: HttpStatusCode = HttpStatusCode(value: 408)
-    static let conflict: HttpStatusCode = HttpStatusCode(value: 409)
-    static let gone: HttpStatusCode = HttpStatusCode(value: 410)
-    static let lengthRequired: HttpStatusCode = HttpStatusCode(value: 411)
-    static let preconditionFailed: HttpStatusCode = HttpStatusCode(value: 412)
-    static let requestEntityTooLarge: HttpStatusCode = HttpStatusCode(value: 413)
-    static let requestUriTooLong: HttpStatusCode = HttpStatusCode(value: 414)
-    static let unsupportedMediaType: HttpStatusCode = HttpStatusCode(value: 415)
-    static let requestedRangeNotSatisfiable: HttpStatusCode = HttpStatusCode(value: 416)
-    static let expectationFailed: HttpStatusCode = HttpStatusCode(value: 417)
+    public static var badRequest: HttpStatusCode { return HttpStatusCode(value: 400) }
+    public static var unauthorized: HttpStatusCode { return HttpStatusCode(value: 401) }
+    public static var paymentRequired: HttpStatusCode { return HttpStatusCode(value: 402) }
+    public static var forbidden: HttpStatusCode { return HttpStatusCode(value: 403) }
+    public static var notFound: HttpStatusCode { return HttpStatusCode(value: 404) }
+    public static var methodNotAllowed: HttpStatusCode { return HttpStatusCode(value: 405) }
+    public static var notAcceptable: HttpStatusCode { return HttpStatusCode(value: 406) }
+    public static var proxyAuthenticationRequired: HttpStatusCode { return HttpStatusCode(value: 407) }
+    public static var requestTimeout: HttpStatusCode { return HttpStatusCode(value: 408) }
+    public static var conflict: HttpStatusCode { return HttpStatusCode(value: 409) }
+    public static var gone: HttpStatusCode { return HttpStatusCode(value: 410) }
+    public static var lengthRequired: HttpStatusCode { return HttpStatusCode(value: 411) }
+    public static var preconditionFailed: HttpStatusCode { return HttpStatusCode(value: 412) }
+    public static var requestEntityTooLarge: HttpStatusCode { return HttpStatusCode(value: 413) }
+    public static var requestUriTooLong: HttpStatusCode { return HttpStatusCode(value: 414) }
+    public static var unsupportedMediaType: HttpStatusCode { return HttpStatusCode(value: 415) }
+    public static var requestedRangeNotSatisfiable: HttpStatusCode { return HttpStatusCode(value: 416) }
+    public static var expectationFailed: HttpStatusCode { return HttpStatusCode(value: 417) }
     
     // Server Error 5xx
-    static let internalServerError: HttpStatusCode = HttpStatusCode(value: 500)
-    static let notImplemented: HttpStatusCode = HttpStatusCode(value: 501)
-    static let badGateway: HttpStatusCode = HttpStatusCode(value: 502)
-    static let ServiceUnavailable: HttpStatusCode = HttpStatusCode(value: 503)
-    static let gatewayTimeout: HttpStatusCode = HttpStatusCode(value: 504)
-    static let httpVersionNotSupported: HttpStatusCode = HttpStatusCode(value: 505)
+    public static var internalServerError: HttpStatusCode { return HttpStatusCode(value: 500) }
+    public static var notImplemented: HttpStatusCode { return HttpStatusCode(value: 501) }
+    public static var badGateway: HttpStatusCode { return HttpStatusCode(value: 502) }
+    public static var ServiceUnavailable: HttpStatusCode { return HttpStatusCode(value: 503) }
+    public static var gatewayTimeout: HttpStatusCode { return HttpStatusCode(value: 504) }
+    public static var httpVersionNotSupported: HttpStatusCode { return HttpStatusCode(value: 505) }
     
     private var value: Int
     
-    var isSucceed: Bool {
+    public var isSucceed: Bool {
         return 200 <= value && value < 300
     }
     
-    init(value: Int?) {
+    public init(value: Int?) {
         self.value = value ?? 0
     }
     
