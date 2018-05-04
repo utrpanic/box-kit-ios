@@ -7,7 +7,7 @@
 //
 
 // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-open class HttpStatusCode: Equatable, CustomStringConvertible {
+public struct HttpStatusCode: Equatable, CustomStringConvertible {
     
     // Informational 1xx
     public static var `continue`: HttpStatusCode { return HttpStatusCode(value: 100) }
@@ -59,14 +59,16 @@ open class HttpStatusCode: Equatable, CustomStringConvertible {
     public static var gatewayTimeout: HttpStatusCode { return HttpStatusCode(value: 504) }
     public static var httpVersionNotSupported: HttpStatusCode { return HttpStatusCode(value: 505) }
     
-    private var value: Int
+    private let value: Int
+    private let message: String
     
     public var isSucceed: Bool {
         return 200 <= value && value < 300
     }
     
-    public init(value: Int?) {
+    public init(value: Int?, message: String? = nil) {
         self.value = value ?? 0
+        self.message = message ?? ""
     }
     
     // MARK: - Equatable
@@ -76,6 +78,10 @@ open class HttpStatusCode: Equatable, CustomStringConvertible {
     
     // MARK: - CustomStringConvertible
     public var description: String {
-        return "\(self.value)"
+        if self.message.isEmpty {
+            return "[\(self.value)]"
+        } else {
+            return "[\(self.value): \(self.message)]"
+        }
     }
 }
