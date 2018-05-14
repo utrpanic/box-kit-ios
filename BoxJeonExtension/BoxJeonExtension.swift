@@ -80,6 +80,10 @@ public extension String {
         return self.utf16.count
     }
     
+    var totalRange: NSRange {
+        return NSRange(location: 0, length: self.length)
+    }
+    
     func prefix(length: Int) -> String {
         guard 0 <= length else { return "" }
         guard length < self.length else { return self }
