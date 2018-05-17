@@ -53,6 +53,17 @@ public extension Dictionary where Key == NSAttributedStringKey, Value == Any {
     }
 }
 
+public extension IndexPath {
+    
+    var next: IndexPath {
+        return IndexPath(item: self.item + 1, section: self.section)
+    }
+    
+    var previous: IndexPath {
+        return IndexPath(item: self.item - 1, section: self.section)
+    }
+}
+
 public extension Int {
     
     var decimalFormatted: String {
