@@ -42,7 +42,8 @@ public extension NibLoadable where Self: UIView {
 public extension NibLoadable where Self: UIViewController {
     
     public static func create(storyboardName: String) -> Self? {
-        return UIStoryboard(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: self.id) as? Self
+        let storyboard = StoryboardCenter.shared.retrieve(name: storyboardName)
+        return storyboard.instantiateViewController(withIdentifier: self.id) as? Self
     }
 }
 
@@ -73,7 +74,7 @@ public extension UIColor {
     }
     
     public convenience init?(hex: String?) {
-        guard let hex = hex?.replacingOccurrences(of: "#", with: ""), hex.length == 6 else {
+        guard let hex = hex?.replacingOccurrences(of: "#", with: ""), hex.count == 6 else {
             return nil
         }
         var rgb: UInt32 = 0

@@ -75,6 +75,10 @@ public extension Int {
 
 public extension String {
     
+    var ns: NSString {
+        return self as NSString
+    }
+    
     var urlEncoded: String {
         return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
     }
@@ -87,34 +91,26 @@ public extension String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    var length: Int {
-        return self.utf16.count
+    var whenVisible: String? {
+        let trimmed = self.trimmed
+        return trimmed.isEmpty ? nil : trimmed
     }
     
-    var totalRange: NSRange {
-        return NSRange(location: 0, length: self.length)
+    var hasElement: Bool {
+        return !self.isEmpty
     }
     
     func prefix(length: Int) -> String {
-        guard 0 <= length else { return "" }
-        guard length < self.length else { return self }
-        return String(Substring(self.utf16.prefix(length)))
+        return String(self.prefix(length))
     }
     
     func suffix(length: Int) -> String {
-        guard 0 <= length else { return "" }
-        guard length < self.length else { return self }
-        return String(Substring(self.utf16.suffix(length)))
+        return String(self.suffix(length))
     }
     
-    func suffix(from: Int) -> String {
-        guard 0 <= from else { return self }
-        guard from < self.length else { return "" }
-        return String(Substring(self.utf16.suffix(self.length - from)))
-    }
-    
-    func substring(from: Int, length: Int) -> String {
-        return self.suffix(from: from).prefix(length: length)
+    func suffix(from start: Int) -> String {
+        let index = self.index(self.startIndex, offsetBy: start)
+        return String(self.suffix(from: index))
     }
     
     func localized(_ args: CVarArg...) -> String {

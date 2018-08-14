@@ -6,9 +6,16 @@
 //  Copyright © 2018년 boxjeon. All rights reserved.
 //
 
-extension NSAttributedString {
+public extension NSAttributedString {
     
     var totalRange: NSRange {
-        return self.string.totalRange
+        return NSRange(location: 0, length: self.length)
+    }
+}
+
+public extension NSString {
+    
+    var totalRange: NSRange {
+        return NSRange(location: 0, length: self.length)
     }
 }
