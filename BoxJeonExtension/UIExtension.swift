@@ -1,5 +1,5 @@
 //
-//  BoxJeonUIExtension.swift
+//  UIExtension.swift
 //  BoxJeonExtension
 //
 //  Created by boxjeon on 2017. 10. 21..

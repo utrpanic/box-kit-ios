@@ -6,7 +6,7 @@
 //  Copyright © 2018년 boxjeon. All rights reserved.
 //
 
-class StoryboardCenter {
+public class StoryboardCenter {
     
     static let shared: StoryboardCenter = StoryboardCenter()
     
