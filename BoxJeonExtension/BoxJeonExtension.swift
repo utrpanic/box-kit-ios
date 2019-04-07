@@ -19,7 +19,7 @@ public extension Array where Array.Element: Equatable {
     
     @discardableResult
     mutating func remove(element: Array.Element) -> Bool {
-        if let index = self.index(of: element) {
+        if let index = self.firstIndex(of: element) {
             self.remove(at: index)
             return true
         } else {
@@ -39,17 +39,6 @@ public extension Dictionary {
     
     var prettyPrint: String {
         return (self as NSDictionary).description
-    }
-}
-
-public extension Dictionary where Key == NSAttributedStringKey, Value == Any {
-    
-    var convertedToStringKey: [String: Any] {
-        var dictionary: [String: Any] = [:]
-        self.forEach({ (key, value) in
-            dictionary[key.rawValue] = value
-        })
-        return dictionary
     }
 }
 

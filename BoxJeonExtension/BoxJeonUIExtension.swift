@@ -26,7 +26,7 @@ public protocol NibLoadable {
 
 public extension NibLoadable where Self: UIView {
     
-    public static func createFromNib() -> Self? {
+    static func createFromNib() -> Self? {
         let bundle = Bundle(for: self)
         let views = bundle.loadNibNamed(self.id, owner: nil, options: nil)
         for index in 0 ..< (views?.count ?? 0) {
@@ -41,7 +41,7 @@ public extension NibLoadable where Self: UIView {
 
 public extension NibLoadable where Self: UIViewController {
     
-    public static func create(storyboardName: String) -> Self? {
+    static func create(storyboardName: String) -> Self? {
         let storyboard = StoryboardCenter.shared.retrieve(name: storyboardName)
         return storyboard.instantiateViewController(withIdentifier: self.id) as? Self
     }
@@ -49,22 +49,22 @@ public extension NibLoadable where Self: UIViewController {
 
 public extension UICollectionView {
     
-    public func registeFromClass<T: UICollectionViewCell>(_ cellClass: T.Type) {
+    func registeFromClass<T: UICollectionViewCell>(_ cellClass: T.Type) {
         self.register(cellClass, forCellWithReuseIdentifier: T.id)
     }
     
-    public func registerFromNib<T: UICollectionViewCell>(_ cellClass: T.Type) where T: NibLoadable {
+    func registerFromNib<T: UICollectionViewCell>(_ cellClass: T.Type) where T: NibLoadable {
         self.register(UINib(nibName: T.id, bundle: nil), forCellWithReuseIdentifier: T.id)
     }
     
-    public func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
+    func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
         return self.dequeueReusableCell(withReuseIdentifier: T.id, for: indexPath) as! T
     }
 }
 
 public extension UIColor {
     
-    public var hex: String {
+    var hex: String {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -73,7 +73,7 @@ public extension UIColor {
         return String(format: "%02x%02x%02x", Int(red * 255), Int(green * 255), Int(blue * 255))
     }
     
-    public convenience init?(hex: String?) {
+    convenience init?(hex: String?) {
         guard let hex = hex?.replacingOccurrences(of: "#", with: ""), hex.count == 6 else {
             return nil
         }
@@ -86,28 +86,28 @@ public extension UIColor {
 
 public extension UIImage {
     
-    public var original: UIImage { return self.withRenderingMode(.alwaysOriginal) }
-    public var template: UIImage { return self.withRenderingMode(.alwaysTemplate) }
+    var original: UIImage { return self.withRenderingMode(.alwaysOriginal) }
+    var template: UIImage { return self.withRenderingMode(.alwaysTemplate) }
 }
 
 public extension UITableView {
     
-    public func registerFromClass<T: UITableViewCell>(_ cellClass: T.Type) {
+    func registerFromClass<T: UITableViewCell>(_ cellClass: T.Type) {
         self.register(cellClass, forCellReuseIdentifier: T.id)
     }
     
-    public func registerFromNib<T: UITableViewCell>(_ cellClass: T.Type) where T: NibLoadable {
+    func registerFromNib<T: UITableViewCell>(_ cellClass: T.Type) where T: NibLoadable {
         self.register(UINib(nibName: T.id, bundle: nil), forCellReuseIdentifier: T.id)
     }
     
-    public func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
+    func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
         return self.dequeueReusableCell(withIdentifier: T.id, for: indexPath) as! T
     }
 }
 
 public extension UIView {
     
-    public func addSubviewAsMatchParent(_ view: UIView) {
+    func addSubviewAsMatchParent(_ view: UIView) {
         self.addSubview(view)
         let leading = self.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         let top = self.topAnchor.constraint(equalTo: view.topAnchor)
