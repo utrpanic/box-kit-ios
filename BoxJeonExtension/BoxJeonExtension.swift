@@ -28,13 +28,6 @@ public extension Array where Array.Element: Equatable {
     }
 }
 
-public extension Bool {
-    
-    mutating func toggle() {
-        self = !self
-    }
-}
-
 public extension Dictionary {
     
     var prettyPrint: String {
@@ -59,6 +52,20 @@ public extension Int {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
+    }
+}
+
+public extension NSAttributedString {
+    
+    var totalRange: NSRange {
+        return NSRange(location: 0, length: self.length)
+    }
+}
+
+public extension NSString {
+    
+    var totalRange: NSRange {
+        return NSRange(location: 0, length: self.length)
     }
 }
 

@@ -6,29 +6,24 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
-public protocol HasClassNameId: class {
+public protocol HasClassName: class {}
+
+public extension HasClassName {
     
-    static var id: String { get }
+    static var className: String { return NSStringFromClass(self).components(separatedBy: ".").last! }
 }
 
-public extension HasClassNameId {
-    
-    static var id: String { return NSStringFromClass(self).components(separatedBy: ".").last! }
-}
+extension UIView: HasClassName {}
 
-extension UIView: HasClassNameId {}
+extension UIViewController: HasClassName {}
 
-extension UIViewController: HasClassNameId {}
-
-public protocol NibLoadable {
-    
-}
+public protocol NibLoadable {}
 
 public extension NibLoadable where Self: UIView {
     
     static func createFromNib() -> Self? {
         let bundle = Bundle(for: self)
-        let views = bundle.loadNibNamed(self.id, owner: nil, options: nil)
+        let views = bundle.loadNibNamed(self.className, owner: nil, options: nil)
         for index in 0 ..< (views?.count ?? 0) {
             if let view = views?[index] as? Self {
                 view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,22 +38,22 @@ public extension NibLoadable where Self: UIViewController {
     
     static func create(storyboardName: String) -> Self? {
         let storyboard = StoryboardCenter.shared.retrieve(name: storyboardName)
-        return storyboard.instantiateViewController(withIdentifier: self.id) as? Self
+        return storyboard.instantiateViewController(withIdentifier: self.className) as? Self
     }
 }
 
 public extension UICollectionView {
     
     func registeFromClass<T: UICollectionViewCell>(_ cellClass: T.Type) {
-        self.register(cellClass, forCellWithReuseIdentifier: T.id)
+        self.register(cellClass, forCellWithReuseIdentifier: T.className)
     }
     
     func registerFromNib<T: UICollectionViewCell>(_ cellClass: T.Type) where T: NibLoadable {
-        self.register(UINib(nibName: T.id, bundle: nil), forCellWithReuseIdentifier: T.id)
+        self.register(UINib(nibName: T.className, bundle: nil), forCellWithReuseIdentifier: T.className)
     }
     
     func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
-        return self.dequeueReusableCell(withReuseIdentifier: T.id, for: indexPath) as! T
+        return self.dequeueReusableCell(withReuseIdentifier: T.className, for: indexPath) as! T
     }
 }
 
@@ -93,15 +88,15 @@ public extension UIImage {
 public extension UITableView {
     
     func registerFromClass<T: UITableViewCell>(_ cellClass: T.Type) {
-        self.register(cellClass, forCellReuseIdentifier: T.id)
+        self.register(cellClass, forCellReuseIdentifier: T.className)
     }
     
     func registerFromNib<T: UITableViewCell>(_ cellClass: T.Type) where T: NibLoadable {
-        self.register(UINib(nibName: T.id, bundle: nil), forCellReuseIdentifier: T.id)
+        self.register(UINib(nibName: T.className, bundle: nil), forCellReuseIdentifier: T.className)
     }
     
     func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
-        return self.dequeueReusableCell(withIdentifier: T.id, for: indexPath) as! T
+        return self.dequeueReusableCell(withIdentifier: T.className, for: indexPath) as! T
     }
 }
 
