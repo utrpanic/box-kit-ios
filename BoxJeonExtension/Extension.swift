@@ -6,19 +6,19 @@
 //  Copyright © 2017년 boxjeon. All rights reserved.
 //
 
-public extension Array {
+extension Array {
     
-    var hasElement: Bool { return !self.isEmpty }
+    public var hasElement: Bool { return !self.isEmpty }
 }
 
-public extension Array where Array.Element: Equatable {
+extension Array where Array.Element: Equatable {
     
-    func contains(_ element: Array.Element) -> Bool {
+    public func contains(_ element: Array.Element) -> Bool {
         return self.contains(where: { $0 == element })
     }
     
     @discardableResult
-    mutating func remove(element: Array.Element) -> Bool {
+    public mutating func remove(element: Array.Element) -> Bool {
         if let index = self.firstIndex(of: element) {
             self.remove(at: index)
             return true
@@ -28,88 +28,88 @@ public extension Array where Array.Element: Equatable {
     }
 }
 
-public extension Dictionary {
+extension Dictionary {
     
-    var prettyPrint: String {
+    public var prettyPrint: String {
         return (self as NSDictionary).description
     }
 }
 
-public extension IndexPath {
+extension IndexPath {
     
-    var next: IndexPath {
+    public var next: IndexPath {
         return IndexPath(item: self.item + 1, section: self.section)
     }
     
-    var previous: IndexPath {
+    public var previous: IndexPath {
         return IndexPath(item: self.item - 1, section: self.section)
     }
 }
 
-public extension Int {
+extension Int {
     
-    var decimalFormatted: String {
+    public var decimalFormatted: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
 }
 
-public extension NSAttributedString {
+extension NSAttributedString {
     
-    var totalRange: NSRange {
+    public var totalRange: NSRange {
         return NSRange(location: 0, length: self.length)
     }
 }
 
-public extension NSString {
+extension NSString {
     
-    var totalRange: NSRange {
+    public var totalRange: NSRange {
         return NSRange(location: 0, length: self.length)
     }
 }
 
-public extension String {
+extension String {
     
-    var ns: NSString {
+    public var ns: NSString {
         return self as NSString
     }
     
-    var urlEncoded: String {
+    public var urlEncoded: String {
         return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
     }
     
-    var urlDecoded: String {
+    public var urlDecoded: String {
         return self.removingPercentEncoding ?? self
     }
     
-    var trimmed: String {
+    public var trimmed: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    var whenVisible: String? {
+    public var whenVisible: String? {
         let trimmed = self.trimmed
         return trimmed.isEmpty ? nil : trimmed
     }
     
-    var hasElement: Bool {
+    public var hasElement: Bool {
         return !self.isEmpty
     }
     
-    func prefix(length: Int) -> String {
+    public func prefix(length: Int) -> String {
         return String(self.prefix(length))
     }
     
-    func suffix(length: Int) -> String {
+    public func suffix(length: Int) -> String {
         return String(self.suffix(length))
     }
     
-    func suffix(from start: Int) -> String {
+    public func suffix(from start: Int) -> String {
         let index = self.index(self.startIndex, offsetBy: start)
         return String(self.suffix(from: index))
     }
     
-    func localized(_ args: CVarArg...) -> String {
+    public func localized(_ args: CVarArg...) -> String {
         let format = NSLocalizedString(self, comment: "")
         if args.isEmpty {
             return format
@@ -119,9 +119,9 @@ public extension String {
     }
 }
 
-public extension URL {
+extension URL {
     
-    static func safeVersion(from string: String?) -> URL? {
+    public static func safeVersion(from string: String?) -> URL? {
         guard let string = self.unescapeHtmlCharacters(from: string) else { return nil }
         return URL(string: string) ?? URL(string: string.urlEncoded)
     }
@@ -141,7 +141,7 @@ public extension URL {
     }
 }
 
-public extension URL {
+extension URL {
     
     // https://github.com/onevcat/MimeType/blob/master/Sources/MimeType.swift
     private var mimeTypes: [String: String] {
@@ -252,7 +252,7 @@ public extension URL {
         ]
     }
     
-    var mimeType: String? {
+    public var mimeType: String? {
         return self.mimeTypes[self.pathExtension.lowercased()]
     }
 }
