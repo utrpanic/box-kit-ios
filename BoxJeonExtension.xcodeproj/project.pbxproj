@@ -14,6 +14,7 @@
 		077DA6661F9B73F60044EAC4 /* BoxJeonExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 077DA6581F9B73F60044EAC4 /* BoxJeonExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07CD40B8209B51DF0089A3A6 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CD40B7209B51DF0089A3A6 /* HttpStatusCode.swift */; };
 		608E31A9225A3F5F00776DA6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608E31A8225A3F5F00776DA6 /* Device.swift */; };
+		60BDF5A62260E198004A6AAA /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDF5A52260E198004A6AAA /* Log.swift */; };
 		8D15FE6F2122B3E2000AAFDC /* StoryboardCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D15FE6E2122B3E2000AAFDC /* StoryboardCenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		077DA6651F9B73F60044EAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07CD40B7209B51DF0089A3A6 /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		608E31A8225A3F5F00776DA6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		60BDF5A52260E198004A6AAA /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		8D15FE6E2122B3E2000AAFDC /* StoryboardCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 				07CD40B7209B51DF0089A3A6 /* HttpStatusCode.swift */,
 				608E31A8225A3F5F00776DA6 /* Device.swift */,
 				8D15FE6E2122B3E2000AAFDC /* StoryboardCenter.swift */,
+				60BDF5A52260E198004A6AAA /* Log.swift */,
 				077DA6591F9B73F60044EAC4 /* Info.plist */,
 			);
 			path = BoxJeonExtension;
@@ -216,6 +219,7 @@
 			files = (
 				071AFB501F9B74F8004BA041 /* Extension.swift in Sources */,
 				8D15FE6F2122B3E2000AAFDC /* StoryboardCenter.swift in Sources */,
+				60BDF5A62260E198004A6AAA /* Log.swift in Sources */,
 				07CD40B8209B51DF0089A3A6 /* HttpStatusCode.swift in Sources */,
 				071AFB521F9B810B004BA041 /* UIExtension.swift in Sources */,
 				608E31A9225A3F5F00776DA6 /* Device.swift in Sources */,

@@ -7,7 +7,7 @@
 //
 
 // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-public class HttpStatusCode: Equatable, CustomStringConvertible {
+open class HttpStatusCode: Equatable, CustomStringConvertible {
     
     // Informational 1xx
     static var `continue`: HttpStatusCode { return HttpStatusCode(value: 100) }
