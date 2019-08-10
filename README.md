@@ -6,6 +6,24 @@ Extensions for personal use.
 * Xcode 10.2
 * CocoaPods 1.7
 
+### Swift Package Manager
+
+Add the BoxKit package to your target dependencies in `Package.swift`:
+
+```swift
+import PackageDescription
+
+let package = Package(
+  name: "YourProject",
+  dependencies: [
+    .package(
+        url: "https://github.com/utrpanic/box-kit-ios",
+        from: "v2.1"
+    ),
+  ]
+)
+```
+
 ### CocoaPods
 
 You can install `BoxKit` via CocoaPods,
