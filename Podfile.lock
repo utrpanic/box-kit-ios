@@ -1,0 +1,23 @@
+PODS:
+  - AnyCodable-FlightSchool (0.2.2)
+  - BoxKit (2.0):
+    - AnyCodable-FlightSchool (~> 0.2.2)
+
+DEPENDENCIES:
+  - BoxKit (from `./`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AnyCodable-FlightSchool
+
+EXTERNAL SOURCES:
+  BoxKit:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  AnyCodable-FlightSchool: 9f55861537d81c472eb406f7f3f5756a793a3b24
+  BoxKit: 326f05ee209e2d47a5b7399d5b30a92a3bea861b
+
+PODFILE CHECKSUM: f9a620fb2e7c60ced872e5cda329a51b8815e3ea
+
+COCOAPODS: 1.7.5

@@ -1,10 +1,3 @@
-//
-//  Extension.swift
-//  BoxJeonExtension
-//
-//  Created by boxjeon on 2017. 10. 21..
-//  Copyright © 2017년 boxjeon. All rights reserved.
-//
 
 extension Array {
     
@@ -27,6 +20,7 @@ extension Array where Array.Element: Equatable {
         }
     }
 }
+
 
 extension Dictionary {
     
@@ -62,6 +56,85 @@ extension NSAttributedString {
     }
 }
 
+extension NSMutableAttributedString {
+    
+    public func font(_ value: UIFont, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        self.addAttribute(.font, value: value, range: range)
+        return self
+    }
+    
+    public func lineSpacing(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        let mutable = self.mutableParagraphStyle(at: range.location)
+        mutable.lineSpacing = value
+        self.addAttribute(.paragraphStyle, value: mutable, range: range)
+        return self
+    }
+    
+    public func maximumLineHeight(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        let mutable = self.mutableParagraphStyle(at: range.location)
+        mutable.maximumLineHeight = value
+        self.addAttribute(.paragraphStyle, value: mutable, range: range)
+        return self
+    }
+    
+    public func alignment(_ value: NSTextAlignment, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        let mutable = self.mutableParagraphStyle(at: range.location)
+        mutable.alignment = value
+        self.addAttribute(.paragraphStyle, value: mutable, range: range)
+        return self
+    }
+    
+    public func lineBreakMode(_ value: NSLineBreakMode, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        let mutable = self.mutableParagraphStyle(at: range.location)
+        mutable.lineBreakMode = value
+        self.addAttribute(.paragraphStyle, value: mutable, range: range)
+        return self
+    }
+    
+    private func mutableParagraphStyle(at location: Int) -> NSMutableParagraphStyle {
+        let mutable: NSMutableParagraphStyle
+        if let paragraphStyle = self.attribute(.paragraphStyle, at: location, effectiveRange: nil) as? NSParagraphStyle {
+            if paragraphStyle is NSMutableParagraphStyle {
+                mutable = paragraphStyle as! NSMutableParagraphStyle
+            } else {
+                mutable = paragraphStyle.mutableCopy() as! NSMutableParagraphStyle
+            }
+        } else {
+            mutable = NSMutableParagraphStyle()
+        }
+        return mutable
+    }
+    
+    public func foregroundColor(_ value: UIColor, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        self.addAttribute(.foregroundColor, value: value, range: range)
+        return self
+    }
+    
+    public func backgroundColor(_ value: UIColor, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        self.addAttribute(.backgroundColor, value: value, range: range)
+        return self
+    }
+    
+    public func kern(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        self.addAttribute(.kern, value: value, range: range)
+        return self
+    }
+    
+    public func link(_ value: URL, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        self.addAttribute(.link, value: value, range: range)
+        return self
+    }
+}
+
 extension NSString {
     
     public var totalRange: NSRange {
@@ -73,6 +146,10 @@ extension String {
     
     public var ns: NSString {
         return self as NSString
+    }
+    
+    public var attributed: NSMutableAttributedString {
+        return NSMutableAttributedString(string: self, attributes: nil)
     }
     
     public var urlEncoded: String {
