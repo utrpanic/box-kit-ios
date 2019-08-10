@@ -1,6 +1,6 @@
 PODS:
   - AnyCodable-FlightSchool (0.2.2)
-  - BoxKit (2.0):
+  - BoxKit (2.1):
     - AnyCodable-FlightSchool (~> 0.2.2)
 
 DEPENDENCIES:
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AnyCodable-FlightSchool: 9f55861537d81c472eb406f7f3f5756a793a3b24
-  BoxKit: 326f05ee209e2d47a5b7399d5b30a92a3bea861b
+  BoxKit: 9b7f35be6ea35cdc9b045bc2e7576c13cf8a54ae
 
 PODFILE CHECKSUM: f9a620fb2e7c60ced872e5cda329a51b8815e3ea
 
