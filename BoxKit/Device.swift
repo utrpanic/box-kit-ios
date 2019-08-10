@@ -6,18 +6,27 @@
 //  Copyright © 2019 boxjeon. All rights reserved.
 //
 
+import UIKit
+
 public struct Device {
     
-    static var isPhone: Bool {
+    public static var isPhone: Bool {
         return UIDevice.current.userInterfaceIdiom == .phone
     }
-    static var isPad: Bool {
+    
+    public static var isPad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
-    static var safeAreaTopInset: CGFloat {
+    
+    public static var statusBarHeight: CGFloat {
+        return UIApplication.shared.statusBarFrame.height
+    }
+    
+    public static var safeAreaTopInset: CGFloat {
         return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0
     }
-    static var safeAreaBottomInset: CGFloat {
+    
+    public static var safeAreaBottomInset: CGFloat {
         return UIApplication.shared.delegate?.window??.safeAreaInsets.bottom ?? 0
     }
 }
