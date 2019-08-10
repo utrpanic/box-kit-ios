@@ -1,3 +1,5 @@
+import Foundation
+import UIKit
 
 public protocol HasClassName: class {}
 

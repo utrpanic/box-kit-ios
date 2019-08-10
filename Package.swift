@@ -1,7 +1,11 @@
+// swift-tools-version:5.0
 import PackageDescription
 
 let package = Package(
     name: "BoxKit",
+    platforms: [
+        .iOS(.v12),
+    ],
     products: [
         .library(
             name: "BoxKit",
@@ -15,6 +19,6 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "BoxKit",
-            dependencies: []),
+            dependencies: ["AnyCodable"]),
     ]
 )
