@@ -1,22 +1,16 @@
-//
-//  ViewController.swift
-//  BoxKitExample
-//
-//  Created by BoxJeon on 2019/08/10.
-//  Copyright © 2019 utrpanic. All rights reserved.
-//
-
 import UIKit
 import BoxKit
 
 class ViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("statusBarHeight: \(Device.safeAreaTopInset)")
+        Log.d("current statusBarHeight: \(Device.currentStatusBarHeight)")
+        Log.d("statusBarHeight: \(UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0)")
+        Log.d(ViewController.className)
     }
 }

@@ -1,12 +1,3 @@
-//
-//  Device.swift
-//  BoxJeonExtension
-//
-//  Created by BoxJeon on 07/04/2019.
-//  Copyright © 2019 boxjeon. All rights reserved.
-//
-
-import UIKit
 
 public struct Device {
     
@@ -18,7 +9,21 @@ public struct Device {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
     
-    public static var statusBarHeight: CGFloat {
+    public static var isLandscape: Bool {
+        // 바닥에 내려놓은 경우 .faceUp
+        // 누워서 들고 있는 경우 .faceDown
+        // isLandscape이 false임.
+        switch UIDevice.current.orientation {
+        case .portrait, .portraitUpsideDown:
+            return false
+        case .landscapeLeft, .landscapeRight:
+            return true
+        default:
+            return UIApplication.shared.statusBarOrientation.isLandscape
+        }
+    }
+    
+    public static var currentStatusBarHeight: CGFloat {
         return UIApplication.shared.statusBarFrame.height
     }
     
@@ -30,4 +35,3 @@ public struct Device {
         return UIApplication.shared.delegate?.window??.safeAreaInsets.bottom ?? 0
     }
 }
-
