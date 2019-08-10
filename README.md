@@ -18,7 +18,7 @@ let package = Package(
   dependencies: [
     .package(
         url: "https://github.com/utrpanic/box-kit-ios",
-        from: "v2.1"
+        from: "2.1.3"
     ),
   ]
 )

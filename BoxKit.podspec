@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BoxKit'
-  s.version          = '2.1.0'
+  s.version          = '2.1.3'
   s.summary          = 'Extensions for personal use.'
 
   s.homepage         = 'https://github.com/utrpanic/box-kit-ios'
