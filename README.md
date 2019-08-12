@@ -30,7 +30,7 @@ You can install `BoxKit` via CocoaPods,
 by adding the following line to your `Podfile`:
 
 ```ruby
-pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1'
+pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1.3'
 ```
 
 ## License
