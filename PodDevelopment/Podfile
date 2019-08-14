@@ -2,7 +2,7 @@ platform :ios, '12.0'
 
 use_frameworks!
 
-target 'BoxKitExample' do
+target 'PodDevelopment' do
   pod 'BoxKit', :path => '../'
 end
 
