@@ -31,6 +31,11 @@ public class _LogService {
         print("\(fileName)[\(line)]: \(self.infoPrefix)\(value)", terminator: "\n")
     }
     
+    public func i(function: String = #function, file: NSString = #file, line: Int = #line) {
+        let fileName = file.lastPathComponent.ns.deletingPathExtension
+        print("\(fileName)[\(line)]: \(self.infoPrefix)\(function)", terminator: "\n")
+    }
+    
     public func d<T>(_ value: T, file: NSString = #file, line: Int = #line) {
         let fileName = file.lastPathComponent.ns.deletingPathExtension
         print("\(fileName)[\(line)]: \(self.debugPrefix)\(value)", terminator: "\n")

@@ -56,17 +56,71 @@ extension NSAttributedString {
     public var totalRange: NSRange {
         return NSRange(location: 0, length: self.length)
     }
+    
+    public func attributes(at location: Int = 0) -> [NSAttributedString.Key: Any] {
+        return self.attributes(at: location, effectiveRange: nil)
+    }
+    
+    public func font(at location: Int = 0) -> UIFont? {
+        return self.attribute(.font, at: location, effectiveRange: nil) as? UIFont
+    }
+    
+    public func lineSpacing(at location: Int = 0) -> CGFloat? {
+        return self.paragraphStyle(at: location)?.lineSpacing
+    }
+    
+    public func maximumLineHeight(at location: Int = 0) -> CGFloat? {
+        return self.paragraphStyle(at: location)?.maximumLineHeight
+    }
+    
+    public func alignment(at location: Int = 0) -> NSTextAlignment? {
+        return self.paragraphStyle(at: location)?.alignment
+    }
+    
+    public func lineBreakMode(at location: Int = 0) -> NSLineBreakMode? {
+        return self.paragraphStyle(at: location)?.lineBreakMode
+    }
+    
+    public func paragraphStyle(at location: Int) -> NSParagraphStyle? {
+        return self.attribute(.paragraphStyle, at: location, effectiveRange: nil) as? NSParagraphStyle
+    }
+    
+    public func foregroundColor(at location: Int = 0) -> UIColor? {
+        return self.attribute(.foregroundColor, at: location, effectiveRange: nil) as? UIColor
+    }
+    
+    public func backgroundColor(at location: Int = 0) -> UIColor? {
+        return self.attribute(.backgroundColor, at: location, effectiveRange: nil) as? UIColor
+    }
+    
+    public func kern(at location: Int = 0) -> CGFloat? {
+        return self.attribute(.kern, at: location, effectiveRange: nil) as? CGFloat
+    }
+    
+    public func link(at location: Int = 0) -> URL? {
+        return self.attribute(.link, at: location, effectiveRange: nil) as? URL
+    }
+    
+    public func baselineOffset(at location: Int = 0) -> CGFloat? {
+        return self.attribute(.baselineOffset, at: location, effectiveRange: nil) as? CGFloat
+    }
 }
 
 extension NSMutableAttributedString {
     
-    public func font(_ value: UIFont, range: NSRange? = nil) -> NSMutableAttributedString {
+    public func setAttributes(_ attributes: [NSAttributedString.Key: Any], range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        self.addAttributes(attributes, range: range)
+        return self
+    }
+    
+    public func setFont(_ value: UIFont, range: NSRange? = nil) -> NSMutableAttributedString {
         let range = range ?? self.totalRange
         self.addAttribute(.font, value: value, range: range)
         return self
     }
     
-    public func lineSpacing(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
+    public func setLineSpacing(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
         let range = range ?? self.totalRange
         let mutable = self.mutableParagraphStyle(at: range.location)
         mutable.lineSpacing = value
@@ -74,7 +128,7 @@ extension NSMutableAttributedString {
         return self
     }
     
-    public func maximumLineHeight(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
+    public func setMaximumLineHeight(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
         let range = range ?? self.totalRange
         let mutable = self.mutableParagraphStyle(at: range.location)
         mutable.maximumLineHeight = value
@@ -82,7 +136,7 @@ extension NSMutableAttributedString {
         return self
     }
     
-    public func alignment(_ value: NSTextAlignment, range: NSRange? = nil) -> NSMutableAttributedString {
+    public func setAlignment(_ value: NSTextAlignment, range: NSRange? = nil) -> NSMutableAttributedString {
         let range = range ?? self.totalRange
         let mutable = self.mutableParagraphStyle(at: range.location)
         mutable.alignment = value
@@ -90,7 +144,7 @@ extension NSMutableAttributedString {
         return self
     }
     
-    public func lineBreakMode(_ value: NSLineBreakMode, range: NSRange? = nil) -> NSMutableAttributedString {
+    public func setLineBreakMode(_ value: NSLineBreakMode, range: NSRange? = nil) -> NSMutableAttributedString {
         let range = range ?? self.totalRange
         let mutable = self.mutableParagraphStyle(at: range.location)
         mutable.lineBreakMode = value
@@ -100,7 +154,7 @@ extension NSMutableAttributedString {
     
     private func mutableParagraphStyle(at location: Int) -> NSMutableParagraphStyle {
         let mutable: NSMutableParagraphStyle
-        if let paragraphStyle = self.attribute(.paragraphStyle, at: location, effectiveRange: nil) as? NSParagraphStyle {
+        if let paragraphStyle = self.paragraphStyle(at: location) {
             if paragraphStyle is NSMutableParagraphStyle {
                 mutable = paragraphStyle as! NSMutableParagraphStyle
             } else {
@@ -112,27 +166,33 @@ extension NSMutableAttributedString {
         return mutable
     }
     
-    public func foregroundColor(_ value: UIColor, range: NSRange? = nil) -> NSMutableAttributedString {
+    public func setForegroundColor(_ value: UIColor, range: NSRange? = nil) -> NSMutableAttributedString {
         let range = range ?? self.totalRange
         self.addAttribute(.foregroundColor, value: value, range: range)
         return self
     }
     
-    public func backgroundColor(_ value: UIColor, range: NSRange? = nil) -> NSMutableAttributedString {
+    public func setBackgroundColor(_ value: UIColor, range: NSRange? = nil) -> NSMutableAttributedString {
         let range = range ?? self.totalRange
         self.addAttribute(.backgroundColor, value: value, range: range)
         return self
     }
     
-    public func kern(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
+    public func setKern(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
         let range = range ?? self.totalRange
         self.addAttribute(.kern, value: value, range: range)
         return self
     }
     
-    public func link(_ value: URL, range: NSRange? = nil) -> NSMutableAttributedString {
+    public func setLink(_ value: URL, range: NSRange? = nil) -> NSMutableAttributedString {
         let range = range ?? self.totalRange
         self.addAttribute(.link, value: value, range: range)
+        return self
+    }
+    
+    public func setBaselineOffset(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        self.addAttribute(.baselineOffset, value: value, range: range)
         return self
     }
 }
