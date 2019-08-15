@@ -81,7 +81,7 @@ extension NSAttributedString {
         return self.paragraphStyle(at: location)?.lineBreakMode
     }
     
-    private func paragraphStyle(at location: Int) -> NSParagraphStyle? {
+    public func paragraphStyle(at location: Int) -> NSParagraphStyle? {
         return self.attribute(.paragraphStyle, at: location, effectiveRange: nil) as? NSParagraphStyle
     }
     
@@ -154,7 +154,7 @@ extension NSMutableAttributedString {
     
     private func mutableParagraphStyle(at location: Int) -> NSMutableParagraphStyle {
         let mutable: NSMutableParagraphStyle
-        if let paragraphStyle = self.attribute(.paragraphStyle, at: location, effectiveRange: nil) as? NSParagraphStyle {
+        if let paragraphStyle = self.paragraphStyle(at: location) {
             if paragraphStyle is NSMutableParagraphStyle {
                 mutable = paragraphStyle as! NSMutableParagraphStyle
             } else {
