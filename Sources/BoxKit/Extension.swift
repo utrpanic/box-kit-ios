@@ -57,27 +57,27 @@ extension NSAttributedString {
         return NSRange(location: 0, length: self.length)
     }
     
-    public func getAttributes(at location: Int = 0) -> [NSAttributedString.Key: Any] {
+    public func attributes(at location: Int = 0) -> [NSAttributedString.Key: Any] {
         return self.attributes(at: location, effectiveRange: nil)
     }
     
-    public func getFont(at location: Int = 0) -> UIFont? {
+    public func font(at location: Int = 0) -> UIFont? {
         return self.attribute(.font, at: location, effectiveRange: nil) as? UIFont
     }
     
-    public func getLineSpacing(at location: Int = 0) -> CGFloat? {
+    public func lineSpacing(at location: Int = 0) -> CGFloat? {
         return self.paragraphStyle(at: location)?.lineSpacing
     }
     
-    public func getMaximumLineHeight(at location: Int = 0) -> CGFloat? {
+    public func maximumLineHeight(at location: Int = 0) -> CGFloat? {
         return self.paragraphStyle(at: location)?.maximumLineHeight
     }
     
-    public func getAlignment(at location: Int = 0) -> NSTextAlignment? {
+    public func alignment(at location: Int = 0) -> NSTextAlignment? {
         return self.paragraphStyle(at: location)?.alignment
     }
     
-    public func getLineBreakMode(at location: Int = 0) -> NSLineBreakMode? {
+    public func lineBreakMode(at location: Int = 0) -> NSLineBreakMode? {
         return self.paragraphStyle(at: location)?.lineBreakMode
     }
     
@@ -85,23 +85,23 @@ extension NSAttributedString {
         return self.attribute(.paragraphStyle, at: location, effectiveRange: nil) as? NSParagraphStyle
     }
     
-    public func getForegroundColor(at location: Int = 0) -> UIColor? {
+    public func foregroundColor(at location: Int = 0) -> UIColor? {
         return self.attribute(.foregroundColor, at: location, effectiveRange: nil) as? UIColor
     }
     
-    public func getBackgroundColor(at location: Int = 0) -> UIColor? {
+    public func backgroundColor(at location: Int = 0) -> UIColor? {
         return self.attribute(.backgroundColor, at: location, effectiveRange: nil) as? UIColor
     }
     
-    public func getKern(at location: Int = 0) -> CGFloat? {
+    public func kern(at location: Int = 0) -> CGFloat? {
         return self.attribute(.kern, at: location, effectiveRange: nil) as? CGFloat
     }
     
-    public func getLink(at location: Int = 0) -> URL? {
+    public func link(at location: Int = 0) -> URL? {
         return self.attribute(.link, at: location, effectiveRange: nil) as? URL
     }
     
-    public func getBaselineOffset(at location: Int = 0) -> CGFloat? {
+    public func baselineOffset(at location: Int = 0) -> CGFloat? {
         return self.attribute(.baselineOffset, at: location, effectiveRange: nil) as? CGFloat
     }
 }

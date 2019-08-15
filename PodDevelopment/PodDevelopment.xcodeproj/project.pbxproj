@@ -54,7 +54,6 @@
 				EFBD2E2FF186969D4ACB87F5 /* Pods-PodDevelopment.debug.xcconfig */,
 				64D4D1FA82EB462EA815ABE9 /* Pods-PodDevelopment.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -79,11 +78,11 @@
 		8D4437252303F4AA00CEC622 /* PodDevelopment */ = {
 			isa = PBXGroup;
 			children = (
-				8D4437262303F4AA00CEC622 /* AppDelegate.swift */,
-				8D4437282303F4AA00CEC622 /* ViewController.swift */,
-				8D44372A2303F4AA00CEC622 /* Main.storyboard */,
-				8D44372D2303F4AA00CEC622 /* Assets.xcassets */,
 				8D44372F2303F4AA00CEC622 /* LaunchScreen.storyboard */,
+				8D4437262303F4AA00CEC622 /* AppDelegate.swift */,
+				8D44372A2303F4AA00CEC622 /* Main.storyboard */,
+				8D4437282303F4AA00CEC622 /* ViewController.swift */,
+				8D44372D2303F4AA00CEC622 /* Assets.xcassets */,
 				8D4437322303F4AA00CEC622 /* Info.plist */,
 			);
 			path = PodDevelopment;
