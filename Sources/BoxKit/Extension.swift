@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 extension Array {
@@ -162,6 +161,8 @@ extension NSMutableAttributedString {
             }
         } else {
             mutable = NSMutableParagraphStyle()
+            // NSParagraphStyle의 default alignment는 center.
+            mutable.alignment = .left
         }
         return mutable
     }
