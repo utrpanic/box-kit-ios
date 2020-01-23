@@ -3,7 +3,6 @@
 //  UIKitSample
 //
 //  Created by box-jeon-mac-mini on 2020/01/19.
-//  Copyright © 2020 utrpanic. All rights reserved.
 //
 
 import UIKit

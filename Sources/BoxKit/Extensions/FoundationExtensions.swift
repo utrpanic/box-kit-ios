@@ -1,34 +1,12 @@
+//
+//  FoundationExtensions.swift
+//  BoxKit
+//
+//  Created by box.jeon on 2020/01/23.
+//
+
+import Foundation
 import UIKit
-
-extension Array {
-    
-    public var hasElement: Bool { return !self.isEmpty }
-}
-
-extension Array where Array.Element: Equatable {
-    
-    public func contains(_ element: Array.Element) -> Bool {
-        return self.contains(where: { $0 == element })
-    }
-    
-    @discardableResult
-    public mutating func remove(element: Array.Element) -> Bool {
-        if let index = self.firstIndex(of: element) {
-            self.remove(at: index)
-            return true
-        } else {
-            return false
-        }
-    }
-}
-
-
-extension Dictionary {
-    
-    public var prettyPrint: String {
-        return (self as NSDictionary).description
-    }
-}
 
 extension IndexPath {
     
@@ -41,67 +19,81 @@ extension IndexPath {
     }
 }
 
-extension Int {
-    
-    public var decimalFormatted: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
-    }
-}
-
 extension NSAttributedString {
     
     public var totalRange: NSRange {
         return NSRange(location: 0, length: self.length)
     }
     
-    public func attributes(at location: Int = 0) -> [NSAttributedString.Key: Any] {
+    public func attributes(at location: Int = 0) -> [NSAttributedString.Key: Any]? {
+        guard location < self.length else { return nil }
         return self.attributes(at: location, effectiveRange: nil)
     }
     
     public func font(at location: Int = 0) -> UIFont? {
+        guard location < self.length else { return nil }
         return self.attribute(.font, at: location, effectiveRange: nil) as? UIFont
     }
     
     public func lineSpacing(at location: Int = 0) -> CGFloat? {
+        guard location < self.length else { return nil }
         return self.paragraphStyle(at: location)?.lineSpacing
     }
     
     public func maximumLineHeight(at location: Int = 0) -> CGFloat? {
+        guard location < self.length else { return nil }
         return self.paragraphStyle(at: location)?.maximumLineHeight
     }
     
     public func alignment(at location: Int = 0) -> NSTextAlignment? {
+        guard location < self.length else { return nil }
         return self.paragraphStyle(at: location)?.alignment
     }
     
     public func lineBreakMode(at location: Int = 0) -> NSLineBreakMode? {
+        guard location < self.length else { return nil }
         return self.paragraphStyle(at: location)?.lineBreakMode
     }
     
     public func paragraphStyle(at location: Int) -> NSParagraphStyle? {
+        guard location < self.length else { return nil }
         return self.attribute(.paragraphStyle, at: location, effectiveRange: nil) as? NSParagraphStyle
     }
     
     public func foregroundColor(at location: Int = 0) -> UIColor? {
+        guard location < self.length else { return nil }
         return self.attribute(.foregroundColor, at: location, effectiveRange: nil) as? UIColor
     }
     
     public func backgroundColor(at location: Int = 0) -> UIColor? {
+        guard location < self.length else { return nil }
         return self.attribute(.backgroundColor, at: location, effectiveRange: nil) as? UIColor
     }
     
     public func kern(at location: Int = 0) -> CGFloat? {
+        guard location < self.length else { return nil }
         return self.attribute(.kern, at: location, effectiveRange: nil) as? CGFloat
     }
     
     public func link(at location: Int = 0) -> URL? {
+        guard location < self.length else { return nil }
         return self.attribute(.link, at: location, effectiveRange: nil) as? URL
     }
     
     public func baselineOffset(at location: Int = 0) -> CGFloat? {
+        guard location < self.length else { return nil }
         return self.attribute(.baselineOffset, at: location, effectiveRange: nil) as? CGFloat
+    }
+    
+    public func underlineStyle(at location: Int = 0) -> NSUnderlineStyle? {
+        guard location < self.length else { return nil }
+        guard let rawValue = self.attribute(.underlineStyle, at: location, effectiveRange: nil) as? Int else { return nil }
+        return NSUnderlineStyle(rawValue: rawValue)
+    }
+    
+    public func underlineColor(at location: Int = 0) -> UIColor? {
+        guard location < self.length else { return nil }
+        return self.attribute(.underlineColor, at: location, effectiveRange: nil) as? UIColor
     }
 }
 
@@ -196,88 +188,24 @@ extension NSMutableAttributedString {
         self.addAttribute(.baselineOffset, value: value, range: range)
         return self
     }
+    
+    public func setUnderlineStyle(_ value: NSUnderlineStyle, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        self.addAttribute(.underlineStyle, value: value.rawValue, range: range)
+        return self
+    }
+    
+    public func setUnderlineColor(_ value: UIColor, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        self.addAttribute(.underlineColor, value: value, range: range)
+        return self
+    }
 }
 
 extension NSString {
     
     public var totalRange: NSRange {
         return NSRange(location: 0, length: self.length)
-    }
-}
-
-extension String {
-    
-    public var ns: NSString {
-        return self as NSString
-    }
-    
-    public var attributed: NSMutableAttributedString {
-        return NSMutableAttributedString(string: self, attributes: nil)
-    }
-    
-    public var urlEncoded: String {
-        return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
-    }
-    
-    public var urlDecoded: String {
-        return self.removingPercentEncoding ?? self
-    }
-    
-    public var trimmed: String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-    
-    public var whenVisible: String? {
-        let trimmed = self.trimmed
-        return trimmed.isEmpty ? nil : trimmed
-    }
-    
-    public var hasElement: Bool {
-        return !self.isEmpty
-    }
-    
-    public func prefix(length: Int) -> String {
-        return String(self.prefix(length))
-    }
-    
-    public func suffix(length: Int) -> String {
-        return String(self.suffix(length))
-    }
-    
-    public func suffix(from start: Int) -> String {
-        let index = self.index(self.startIndex, offsetBy: start)
-        return String(self.suffix(from: index))
-    }
-    
-    public func localized(_ args: CVarArg...) -> String {
-        let format = NSLocalizedString(self, comment: "")
-        if args.isEmpty {
-            return format
-        } else {
-            return String(format: format, arguments: args)
-        }
-    }
-}
-
-extension URL {
-    
-    public static func safeVersion(from string: String?) -> URL? {
-        guard let string = self.unescapeHtmlCharacters(from: string) else { return nil }
-        return URL(string: string) ?? URL(string: string.urlEncoded)
-    }
-    
-    private static func unescapeHtmlCharacters(from string: String?) -> String? {
-        guard string?.contains(";") == true else { return string }
-        guard let data = string?.data(using: .utf8) else { return string }
-        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
-            .documentType: NSAttributedString.DocumentType.html.rawValue,
-            .characterEncoding: String.Encoding.utf8.rawValue
-        ]
-        if let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) {
-            return attributedString.string
-        } else {
-            return string
-        }
     }
 }
 
@@ -396,3 +324,4 @@ extension URL {
         return self.mimeTypes[self.pathExtension.lowercased()]
     }
 }
+

@@ -54,6 +54,7 @@
 		60C52F7923D48FDC00EC55F0 /* UIKitSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIKitSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C52F7D23D48FDC00EC55F0 /* UIKitSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitSampleUITests.swift; sourceTree = "<group>"; };
 		60C52F7F23D48FDC00EC55F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D04D39B23D9CCE80069ADC8 /* UIKitSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UIKitSample.entitlements; sourceTree = "<group>"; };
 		B972B1B312BDEB15B89B6BA8 /* Pods-UIKitSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitSample.release.xcconfig"; path = "Target Support Files/Pods-UIKitSample/Pods-UIKitSample.release.xcconfig"; sourceTree = "<group>"; };
 		E26FD99AFB24DF9DDCD9A09E /* Pods-UIKitSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIKitSample.debug.xcconfig"; path = "Target Support Files/Pods-UIKitSample/Pods-UIKitSample.debug.xcconfig"; sourceTree = "<group>"; };
 		E37D0B200C6F9F92AB4DF350 /* Pods_UIKitSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIKitSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +92,6 @@
 				E26FD99AFB24DF9DDCD9A09E /* Pods-UIKitSample.debug.xcconfig */,
 				B972B1B312BDEB15B89B6BA8 /* Pods-UIKitSample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -120,6 +120,7 @@
 		60C52F5523D48FDB00EC55F0 /* UIKitSample */ = {
 			isa = PBXGroup;
 			children = (
+				8D04D39B23D9CCE80069ADC8 /* UIKitSample.entitlements */,
 				60C52F5623D48FDB00EC55F0 /* AppDelegate.swift */,
 				60C52F5B23D48FDB00EC55F0 /* SceneDelegate.swift */,
 				60C52F5D23D48FDB00EC55F0 /* MasterViewController.swift */,
@@ -425,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -479,7 +480,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -494,14 +495,18 @@
 			baseConfigurationReference = E26FD99AFB24DF9DDCD9A09E /* Pods-UIKitSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = UIKitSample/UIKitSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				INFOPLIST_FILE = UIKitSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.utrpanic.UIKitSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -512,14 +517,18 @@
 			baseConfigurationReference = B972B1B312BDEB15B89B6BA8 /* Pods-UIKitSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = UIKitSample/UIKitSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				INFOPLIST_FILE = UIKitSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.utrpanic.UIKitSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

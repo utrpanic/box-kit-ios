@@ -2,7 +2,7 @@
 //  SwiftUISampleUITests.swift
 //  SwiftUISampleUITests
 //
-//  Created by box-jeon-mac-mini on 2020/01/19.
+//  Created by box.jeon on 2020/01/23.
 //  Copyright © 2020 utrpanic. All rights reserved.
 //
 
