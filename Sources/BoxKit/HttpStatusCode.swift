@@ -1,3 +1,9 @@
+//
+//  HttpStatusCode.swift
+//  BoxKit
+//
+//  Created by box.jeon on 2020/01/23.
+//
 
 public protocol HttpStatusCodeProtocol {
     

@@ -1,3 +1,10 @@
+//
+//  LogService.swift
+//  BoxKit
+//
+//  Created by box.jeon on 2020/01/23.
+//
+
 import Foundation
 
 public let Log = _LogService.shared
@@ -6,9 +13,9 @@ public class _LogService {
     
     static let shared: _LogService = _LogService()
     
-    private var infoPrefix: String = "ℹ️ "
+    private var infoPrefix: String = "✅"
     private var debugPrefix: String = ""
-    private var errorPrefix: String = "❌ "
+    private var errorPrefix: String = "❗️"
     
     private init() {
         
@@ -16,13 +23,13 @@ public class _LogService {
     
     public func setupPrefix(debug: String?, info: String?, error: String?) {
         if let info = info {
-            self.infoPrefix = "\(info) "
+            self.infoPrefix = info
         }
         if let debug = debug {
-            self.debugPrefix = "\(debug) "
+            self.debugPrefix = debug
         }
         if let error = error {
-            self.errorPrefix = "\(error) "
+            self.errorPrefix = error
         }
     }
     

@@ -18,8 +18,8 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '12.0'
   s.swift_versions = '5.0'
-  s.source_files = 'Sources/BoxKit/*'
+  s.source_files = 'Sources/BoxKit/**/*'
   s.frameworks = 'UIKit'
   s.static_framework = true
-  s.dependency 'AnyCodable-FlightSchool', '0.2.2'
+  s.dependency 'AnyCodable-FlightSchool', '0.2.3'
 end

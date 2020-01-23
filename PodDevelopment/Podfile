@@ -1,8 +1,0 @@
-platform :ios, '12.0'
-
-use_frameworks!
-
-target 'PodDevelopment' do
-  pod 'BoxKit', :path => '../'
-end
-
