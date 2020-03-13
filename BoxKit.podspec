@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BoxKit'
-  s.version          = '2.1.5'
+  s.version          = '2.1.6'
   s.summary          = 'Extensions for personal use.'
 
   s.homepage         = 'https://github.com/utrpanic/box-kit-ios'
@@ -20,6 +20,5 @@ Pod::Spec.new do |s|
   s.swift_versions = '5.0'
   s.source_files = 'Sources/BoxKit/**/*'
   s.frameworks = 'UIKit'
-  s.static_framework = true
   s.dependency 'AnyCodable-FlightSchool', '0.2.3'
 end
