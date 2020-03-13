@@ -20,5 +20,4 @@ Pod::Spec.new do |s|
   s.swift_versions = '5.0'
   s.source_files = 'Sources/BoxKit/**/*'
   s.frameworks = 'UIKit'
-  s.dependency 'AnyCodable-FlightSchool', '0.2.3'
 end

@@ -5,10 +5,7 @@
 //  Created by box.jeon on 2020/01/23.
 //
 
-import Foundation
 import UIKit
-
-import AnyCodable
 
 extension Array {
     
