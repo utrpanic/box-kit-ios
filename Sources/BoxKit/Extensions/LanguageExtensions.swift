@@ -128,6 +128,13 @@ extension KeyedDecodingContainer {
     }
 }
 
+extension Set {
+    
+    var hasElement: Bool {
+        return !self.isEmpty
+    }
+}
+
 extension String {
     
     public var ns: NSString {
