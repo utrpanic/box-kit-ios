@@ -2,10 +2,9 @@
 //  FoundationExtensions.swift
 //  BoxKit
 //
-//  Created by box.jeon on 2020/01/23.
+//  Created by box-jeon on 2020/01/23.
 //
 
-import Foundation
 import UIKit
 
 extension IndexPath {
@@ -38,6 +37,11 @@ extension NSAttributedString {
     public func lineSpacing(at location: Int = 0) -> CGFloat? {
         guard location < self.length else { return nil }
         return self.paragraphStyle(at: location)?.lineSpacing
+    }
+    
+    public func minimumLineHeight(at location: Int = 0) -> CGFloat? {
+        guard location < self.length else { return nil }
+        return self.paragraphStyle(at: location)?.minimumLineHeight
     }
     
     public func maximumLineHeight(at location: Int = 0) -> CGFloat? {
@@ -115,6 +119,14 @@ extension NSMutableAttributedString {
         let range = range ?? self.totalRange
         let mutable = self.mutableParagraphStyle(at: range.location)
         mutable.lineSpacing = value
+        self.addAttribute(.paragraphStyle, value: mutable, range: range)
+        return self
+    }
+    
+    public func setMinimumLineHeight(_ value: CGFloat, range: NSRange? = nil) -> NSMutableAttributedString {
+        let range = range ?? self.totalRange
+        let mutable = self.mutableParagraphStyle(at: range.location)
+        mutable.minimumLineHeight = value
         self.addAttribute(.paragraphStyle, value: mutable, range: range)
         return self
     }
@@ -324,4 +336,3 @@ extension URL {
         return self.mimeTypes[self.pathExtension.lowercased()]
     }
 }
-
