@@ -2,7 +2,7 @@
 //  Device.swift
 //  BoxKit
 //
-//  Created by box.jeon on 2020/01/23.
+//  Created by box-jeon on 2020/01/23.
 //
 
 import UIKit
@@ -46,11 +46,11 @@ public struct Device {
         }
     }
     
-    public static var safeAreaTopInset: CGFloat {
-        return UIApplication.shared.delegate?.window??.safeAreaInsets.top ?? 0
+    public static var safeAreaInsets: UIEdgeInsets {
+        return UIApplication.shared.delegate?.window??.safeAreaInsets ?? .zero
     }
     
-    public static var safeAreaBottomInset: CGFloat {
-        return UIApplication.shared.delegate?.window??.safeAreaInsets.bottom ?? 0
+    public static var singlePixel: CGFloat {
+        return 1.0 / UIScreen.main.scale
     }
 }

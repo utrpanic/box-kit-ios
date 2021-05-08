@@ -2,7 +2,7 @@
 //  LogService.swift
 //  BoxKit
 //
-//  Created by box.jeon on 2020/01/23.
+//  Created by box-jeon on 2020/01/23.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ public class _LogService {
     
     static let shared: _LogService = _LogService()
     
-    private var infoPrefix: String = "✅"
+    private var infoPrefix: String = "ℹ️"
     private var debugPrefix: String = ""
     private var errorPrefix: String = "❗️"
     

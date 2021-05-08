@@ -1,11 +1,12 @@
 //
-//  LanguageExtensions.swift
+//  Swift+Extension.swift
 //  BoxKit
 //
-//  Created by box.jeon on 2020/01/23.
+//  Created by box-jeon on 2020/01/23.
 //
 
 import UIKit
+import AnyCodable
 
 extension Array {
     
@@ -61,6 +62,18 @@ extension DecodingError: CustomDebugStringConvertible {
             return self.localizedDescription
         }
     }
+    
+    public var codingPath: String {
+        switch self {
+        case let .dataCorrupted(context),
+             let .keyNotFound(_, context),
+             let .typeMismatch(_, context),
+             let .valueNotFound(_, context):
+            return context.codingPath.map { $0.stringValue }.joined(separator: ".")
+        @unknown default:
+            return "None"
+        }
+    }
 }
 
 extension Dictionary {
@@ -79,6 +92,10 @@ extension Dictionary {
     }
 }
 
+extension Double {
+    public var cg: CGFloat { CGFloat(self) }
+}
+
 extension Encodable {
     
     public func encodeToJsonString(with jsonEncoder: JSONEncoder) -> String? {
@@ -87,8 +104,13 @@ extension Encodable {
     }
 }
 
+extension Float {
+    public var cg: CGFloat { CGFloat(self) }
+}
 
 extension Int {
+    
+    public var cg: CGFloat { CGFloat(self) }
     
     public var decimalFormatted: String {
         let formatter = NumberFormatter()
@@ -126,10 +148,7 @@ extension KeyedDecodingContainer {
 }
 
 extension Set {
-    
-    var hasElement: Bool {
-        return !self.isEmpty
-    }
+    var hasElement: Bool { !self.isEmpty }
 }
 
 extension String {

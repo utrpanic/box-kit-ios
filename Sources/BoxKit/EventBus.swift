@@ -2,7 +2,7 @@
 //  EventBus.swift
 //  BoxKit
 //
-//  Created by box.jeon on 2020/01/23.
+//  Created by box-jeon on 2020/01/23.
 //
 
 import Foundation
