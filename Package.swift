@@ -15,5 +15,6 @@ let package = Package(
     ],
     targets: [
         .target(name: "BoxKit", dependencies: ["AnyCodable"]),
+        .testTarget(name: "BoxKitTests", dependencies: ["BoxKit"]),
     ]
 )
