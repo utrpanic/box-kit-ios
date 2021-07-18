@@ -45,6 +45,11 @@ extension UIColor {
     }
 }
 
+extension UIDevice {
+    public var isPhone: Bool { self.userInterfaceIdiom == .phone }
+    public var isPad: Bool { self.userInterfaceIdiom == .pad }
+}
+
 extension UIImage {
     
     public var original: UIImage {
