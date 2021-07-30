@@ -39,9 +39,9 @@ extension NibLoadable where Self: UIView {
 
 extension NibLoadable where Self: UIViewController {
     
-    public static func create(storyboardName: String) -> Self? {
+    public static func create(storyboardName: String) -> Self {
         let storyboard = StoryboardCenter.shared.retrieve(name: storyboardName)
-        return storyboard.instantiateViewController(withIdentifier: self.typeName) as? Self
+        return storyboard.instantiateViewController(identifier: self.typeName, creator: nil)
     }
 }
 
