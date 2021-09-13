@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AVFoundation
 
 extension UICollectionView {
     
@@ -19,7 +18,10 @@ extension UICollectionView {
     }
     
     public func dequeueReusableCell<T: UICollectionViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
-        return (self.dequeueReusableCell(withReuseIdentifier: T.typeName, for: indexPath) as? T)!
+        guard let cell = self.dequeueReusableCell(withReuseIdentifier: T.typeName, for: indexPath) as? T else {
+            preconditionFailure()
+        }
+        return cell
     }
 }
 
@@ -72,7 +74,10 @@ extension UITableView {
     }
     
     public func dequeueReusableView<T: UITableViewHeaderFooterView>(_ cellClass: T.Type) -> T {
-        return (self.dequeueReusableHeaderFooterView(withIdentifier: T.typeName) as? T)!
+        guard let view = self.dequeueReusableHeaderFooterView(withIdentifier: T.typeName) as? T else {
+            preconditionFailure()
+        }
+        return view
     }
     
     public func registerFromClass<T: UITableViewCell>(_ cellClass: T.Type) {
@@ -84,6 +89,9 @@ extension UITableView {
     }
     
     public func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
-        return (self.dequeueReusableCell(withIdentifier: T.typeName, for: indexPath) as? T)!
+        guard let cell = self.dequeueReusableCell(withIdentifier: T.typeName, for: indexPath) as? T else {
+            preconditionFailure()
+        }
+        return cell
     }
 }
