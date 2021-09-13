@@ -16,10 +16,9 @@
 		60E8038226EFA110008F1550 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E8037A26EFA110008F1550 /* NibLoadable.swift */; };
 		60E8038326EFA110008F1550 /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E8037B26EFA110008F1550 /* LogService.swift */; };
 		60E8038926EFA122008F1550 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 60E8038826EFA122008F1550 /* Cartfile */; };
-		60E803A126EFA367008F1550 /* AnyCodable.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E803A026EFA367008F1550 /* AnyCodable.xcframework */; };
-		60E803A226EFA367008F1550 /* AnyCodable.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60E803A026EFA367008F1550 /* AnyCodable.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60E803BD26EFA3F5008F1550 /* BoxKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E8036626EFA0D5008F1550 /* BoxKit.framework */; platformFilter = ios; };
 		60E803C326EFA430008F1550 /* SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E8038626EFA116008F1550 /* SwiftTests.swift */; };
+		60E803CA26EFB4BA008F1550 /* AnyCodable.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60E803A026EFA367008F1550 /* AnyCodable.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,20 +30,6 @@
 			remoteInfo = BoxKit;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		60E803A326EFA368008F1550 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				60E803A226EFA367008F1550 /* AnyCodable.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		60E8036626EFA0D5008F1550 /* BoxKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BoxKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60E803A126EFA367008F1550 /* AnyCodable.xcframework in Frameworks */,
+				60E803CA26EFB4BA008F1550 /* AnyCodable.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +163,6 @@
 				60E8036226EFA0D5008F1550 /* Sources */,
 				60E8036326EFA0D5008F1550 /* Frameworks */,
 				60E8036426EFA0D5008F1550 /* Resources */,
-				60E803A326EFA368008F1550 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
