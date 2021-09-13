@@ -5,7 +5,7 @@
 //  Created by box-jeon on 2020/01/23.
 //
 
-public protocol HttpStatusCodeProtocol {
+public protocol HTTPStatusCode {
     
     var value: Int { get }
     
@@ -14,7 +14,7 @@ public protocol HttpStatusCodeProtocol {
 
 // https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 // https://tools.ietf.org/html/rfc6585
-extension HttpStatusCodeProtocol {
+extension HTTPStatusCode {
     
     // Informational 1xx
     public static var `continue`: Self { return Self(value: 100) }
@@ -75,7 +75,7 @@ extension HttpStatusCodeProtocol {
     }
 }
 
-open class HttpStatusCode: HttpStatusCodeProtocol, Equatable, CustomStringConvertible {
+open class HTTPStatusCodeImp: HTTPStatusCode, Equatable, CustomStringConvertible {
     
     public let value: Int
     
@@ -83,7 +83,7 @@ open class HttpStatusCode: HttpStatusCodeProtocol, Equatable, CustomStringConver
         self.value = value ?? 0
     }
     
-    public static func == (lhs: HttpStatusCode, rhs: HttpStatusCode) -> Bool {
+    public static func == (lhs: HTTPStatusCodeImp, rhs: HTTPStatusCodeImp) -> Bool {
         return lhs.value == rhs.value
     }
     
